@@ -4,53 +4,71 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-  public float speed = 10f, jumpVelocity = 10f;
-  public LayerMask playerMask;
-  Transform myTrans, tagGround;
-  Rigidbody2D myBody;
-  SpriteRenderer myModel;
 
-  public bool isGrounded = false;
+	[Header("Controller Speed and Jump")]
+	[Tooltip("Character Controller Speed and Jump")]
+	public float speed = 2f, jumpVelocity = 10f;
 
-  void Awake(){
-	myBody = this.GetComponent<Rigidbody2D>();
-	myModel = this.GetComponent<SpriteRenderer>();
-	myTrans = this.transform;
-	tagGround = GameObject.Find(this.name+"/feet").transform;
-  }
+	[Header("Is Player on Ground Variables")]
+	public LayerMask playerMask;
+	Transform playerTransform, tagGround;
+	public bool isGrounded = false;
 
-  void Update(){
-	isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
-	Move(Input.GetAxisRaw("Horizontal"));
-	if (Input.GetButtonDown("Jump")){
-		Jump();
+	Rigidbody2D playerRigidBody;
+	bool flipped = false;
+
+	//Initialize Basic Variables
+	void Awake()
+	{
+		playerRigidBody = GetComponent<Rigidbody2D>();
+		playerTransform = this.transform;
+		tagGround = GameObject.Find(this.name+"/feet").transform;
 	}
-	FlipPlayer();
-  }
 
-  public void Move(float horizontalInput){
-	if (isGrounded == true){
-		Vector2 moveVel = myBody.velocity;
-		moveVel.x = (horizontalInput * speed);
-		myBody.velocity = moveVel;
-	}else{
-		Vector2 moveVel = myBody.velocity;
-		moveVel.x = (horizontalInput * 0);
-		myBody.velocity = moveVel;
-	}
-  }
 
-  public void Jump(){
-	if(isGrounded){
-		myBody.velocity += jumpVelocity * Vector2.up;
+	//Linecast, identify if player is touching the ground.
+	void Update(){
+		isGrounded = Physics2D.Linecast(playerTransform.position, tagGround.position, playerMask);
+		Move(Input.GetAxisRaw("Horizontal"));
+		
+		if (Input.GetButtonDown("Jump"))
+		{
+			Jump();
+		}
+	
+		FlipPlayer();
 	}
-  }
 
-  public void FlipPlayer(){
-	if(myBody.velocity.x < -0.1f){
-		myModel.flipX = false;
-	}else if(myBody.velocity.x > 0.1f){
-		myModel.flipX = true;
+	//Move Function, else statement locks player airborne controls.
+	public void Move(float horizontalInput){
+		if (isGrounded == true){
+			Vector2 moveVel = playerRigidBody.velocity;
+			moveVel.x = (horizontalInput * speed);
+			playerRigidBody.velocity = moveVel;
+		}else{
+			Vector2 moveVel = playerRigidBody.velocity;
+			moveVel.x = (horizontalInput * 0);
+			playerRigidBody.velocity = moveVel;
+		}
 	}
-  }
+
+	//Jump Function
+	public void Jump(){
+		if(isGrounded){
+			playerRigidBody.velocity += jumpVelocity * Vector2.up;
+			CharacterPlantMechanic.jumpCounter ++;
+		}
+	}
+
+	//Flips the whole game object from left to right.
+	public void FlipPlayer(){
+		if(playerRigidBody.velocity.x < 0f){
+			if (flipped != true){
+				playerTransform.localScale = new Vector3(-1f, 1f, 1f);
+			}
+		}else if(playerRigidBody.velocity.x > 0f){
+			flipped = false;
+			playerTransform.localScale = new Vector3(1f, 1f, 1f);
+		}
+	}
 }
