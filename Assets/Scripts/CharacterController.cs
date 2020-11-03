@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
 	Transform playerTransform, tagGround;
 	public bool isGrounded = false;
 
+	public static bool warriorSwap = false;
 	Rigidbody2D playerRigidBody;
 	bool flipped = false;
 
@@ -30,13 +31,30 @@ public class CharacterController : MonoBehaviour
 	void Update(){
 		isGrounded = Physics2D.Linecast(playerTransform.position, tagGround.position, playerMask);
 		Move(Input.GetAxisRaw("Horizontal"));
-		
+
 		if (Input.GetButtonDown("Jump"))
 		{
 			Jump();
 		}
 	
+		//character switching
+		if (Input.GetKeyDown("f")){
+			Debug.Log("pressed f");
+			Invoke("CharacterSwap", 0.5f);
+		}
 		FlipPlayer();
+	}
+
+	public void CharacterSwap()
+	{
+		if (warriorSwap == false)
+		{
+			warriorSwap = true;
+		}
+		else
+		{
+			warriorSwap = false;
+		}
 	}
 
 	//Move Function, else statement locks player airborne controls.

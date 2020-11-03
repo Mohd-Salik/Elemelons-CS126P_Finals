@@ -4,39 +4,71 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Spawn Configurations")]
+	[Tooltip("How many enemies spawn")]
+    public float spawnRate = 10f;
+	[Tooltip("How long enemies spawn")]
+    public float nextSpawn = 5.0f;
 
-    public GameObject enemy;
-    float randX;
+    GameObject enemy;
+    float rngRange;
     Vector2 whereToSpawn;
-    public float spawnRate = 2f;
-    float nextSpawn = 0.0f;
-    float Spawn = 0.0f;
-    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float ySpawn, xSpawn = 0f;
 
     // Update is called once per frame
     void Update()
-    {
-        
-    if(Time.time > nextSpawn)
-    {
-        
-        nextSpawn = Time.time +spawnRate;
+    {   
+        //randomizes spawn enemy type
+        rngRange = Random.Range(0, 4);
 
-        if(Random.value<0.5f)
-            Spawn= -8f;
-        else
-            Spawn= 1.2f;
+        if(Time.time > nextSpawn)
+        {
+            //add more real-time until next spawn
+            nextSpawn = Time.time + spawnRate;
 
-        // randX = Random.Range (-7.22f, 0.3f);
-        whereToSpawn = new Vector2 (Spawn, transform.position.y);
-        Instantiate (enemy, whereToSpawn, Quaternion.identity);
-    }
+            //spawn air minion in air
+            if (Mathf.Abs(rngRange) == 0)
+            {
+                enemy = GameObject.Find(this.name+"air_minion");
+                ySpawn = Random.Range(1f, 2.40f);
+            }
+
+            //spawn fire_minion
+            else if (Mathf.Abs(rngRange) == 1)
+            {
+                enemy = GameObject.Find(this.name+"fire_minion");
+                ySpawn = -1.49f;
+            }
+
+            //spawn water_minion
+            else if (Mathf.Abs(rngRange) == 2)
+            {
+                enemy = GameObject.Find(this.name+"water_minion");
+                ySpawn = -1.49f;
+            }
+
+            //spawn earth minion
+            else
+            {
+                enemy = GameObject.Find(this.name+"earth_minion");
+                ySpawn = -1.49f;
+            }
+
+            //randomizes left and right spawn
+            if(Random.value<0.5f)
+            {
+                xSpawn = -9f;
+            }
+            else
+            {
+                xSpawn = 2f;
+            }
+
+            //spawn enemy
+            whereToSpawn = new Vector3 (xSpawn, ySpawn, 0f);
+            Instantiate (enemy, whereToSpawn, Quaternion.identity);
+        }
 
     }
 }

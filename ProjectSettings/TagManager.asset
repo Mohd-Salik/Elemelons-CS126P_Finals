@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - land
-  - 
-  - 
+  - TEXTS
+  - UI Canvas
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: GUI
     uniqueID: 2100176699
+    locked: 0
+  - name: UI Canvas
+    uniqueID: 283089201
     locked: 0
