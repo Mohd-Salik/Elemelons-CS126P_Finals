@@ -7,8 +7,17 @@ public class GFX : MonoBehaviour
 {
     public AIPath aiPath;
 
-    // Update is called once per frame
-    void Update()
+    //if morning, destroy the object
+    void Update(){
+        if (Environment.nightTime == true){
+            ChasePlayer();
+        }
+        else{
+            Destroy(GameObject.Find(this.name+"(Clone)"));
+        }
+    }
+
+    void ChasePlayer()
     {
         if(aiPath.desiredVelocity.x >= 0.01f)
         {

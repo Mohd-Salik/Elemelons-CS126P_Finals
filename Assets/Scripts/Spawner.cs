@@ -16,52 +16,49 @@ public class Spawner : MonoBehaviour
 
     float ySpawn, xSpawn = 0f;
 
-    // Update is called once per frame
-    void Update()
-    {   
+    void Update(){
+        if (Environment.nightTime == true){
+            SpawnEnemy();
+        }
+    }
+
+    void SpawnEnemy(){   
         //randomizes spawn enemy type
         rngRange = Random.Range(0, 4);
 
-        if(Time.time > nextSpawn)
-        {
+        if(Time.time > nextSpawn){
             //add more real-time until next spawn
             nextSpawn = Time.time + spawnRate;
 
             //spawn air minion in air
-            if (Mathf.Abs(rngRange) == 0)
-            {
+            if (Mathf.Abs(rngRange) == 0){
                 enemy = GameObject.Find(this.name+"air_minion");
                 ySpawn = Random.Range(1f, 2.40f);
             }
 
             //spawn fire_minion
-            else if (Mathf.Abs(rngRange) == 1)
-            {
+            else if (Mathf.Abs(rngRange) == 1){
                 enemy = GameObject.Find(this.name+"fire_minion");
                 ySpawn = -1.49f;
             }
 
             //spawn water_minion
-            else if (Mathf.Abs(rngRange) == 2)
-            {
+            else if (Mathf.Abs(rngRange) == 2){
                 enemy = GameObject.Find(this.name+"water_minion");
                 ySpawn = -1.49f;
             }
 
             //spawn earth minion
-            else
-            {
+            else{
                 enemy = GameObject.Find(this.name+"earth_minion");
                 ySpawn = -1.49f;
             }
 
             //randomizes left and right spawn
-            if(Random.value<0.5f)
-            {
+            if(Random.value<0.5f){
                 xSpawn = -9f;
             }
-            else
-            {
+            else{
                 xSpawn = 2f;
             }
 

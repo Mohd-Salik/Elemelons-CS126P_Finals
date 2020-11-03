@@ -16,7 +16,6 @@ public class CharacterAnimator : MonoBehaviour
         else if (CharacterController.warriorSwap == true){
             animator.runtimeAnimatorController = warrior as RuntimeAnimatorController;
         }
-        Debug.Log(Input.GetAxis("Horizontal"));
         animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
     }
 }
