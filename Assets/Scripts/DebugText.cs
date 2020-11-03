@@ -17,6 +17,7 @@ public class DebugText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugText.text = "DawnRise: " + Environment.dawnRise.ToString() + "\nTimerDAWN:" + Environment.timerDawnRise.ToString("0") + "\nNightTime: " + Environment.nightTime.ToString() + "\nTIMER: " + Environment.timer.ToString("0");
+        // debugText.text = "DawnRise: " + Environment.dawnRise.ToString() + "\nTimerDAWN:" + Environment.timerDawnRise.ToString("0") + "\nNightTime: " + Environment.nightTime.ToString() + "\nTIMER: " + Environment.timer.ToString("0");
+        debugText.text = CharacterPlantMechanic.debugCharacterPlantMechanic;
     }
 }

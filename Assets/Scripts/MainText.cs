@@ -5,24 +5,20 @@ using UnityEngine.UI;
 
 public class MainText : MonoBehaviour
 {
-    // public static bool win = false;
-    // public static bool onstart_point = false;
-    // public static bool count_down = true;
-    // public static float timer = 5000f;
+
     Text mainText;
 
     void Start(){
         mainText = GetComponent<Text>();
     }
 
+    //Sample Text UI for debbuging purposes
     void updateTextUI(){
 
-        if (CharacterController.warriorSwap == true)
-        {
+        if (CharacterController.warriorSwap == true){
             mainText.text = "WARRIOR MODE";
         }
-        else if (CharacterController.warriorSwap == false)
-        {
+        else if (CharacterController.warriorSwap == false){
             mainText.text = "FARMING MODE";
         }
     }

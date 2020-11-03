@@ -14,6 +14,19 @@ public class CharacterController : MonoBehaviour
 	Transform playerTransform, tagGround;
 	public bool isGrounded = false;
 
+	[Header("Elemental Counters")]
+	public static int airPower = 0;
+	public static int waterPower = 0;
+	public static int firePower = 0;
+	public static int earthPower = 0;
+
+	public static int airSeed = 4;
+	public static int waterSeed = 4;
+	public static int fireSeed = 4;
+	public static int earthSeed = 4;
+
+	[Header("Type and Character Switch")]
+	public static int selectedType = 0;
 	public static bool warriorSwap = false;
 	Rigidbody2D playerRigidBody;
 	bool flipped = false;
@@ -31,28 +44,40 @@ public class CharacterController : MonoBehaviour
 	void Update(){
 		isGrounded = Physics2D.Linecast(playerTransform.position, tagGround.position, playerMask);
 		Move(Input.GetAxisRaw("Horizontal"));
-
-		if (Input.GetButtonDown("Jump"))
-		{
+		if (Input.GetButtonDown("Jump")){
 			Jump();
 		}
 	
 		//character switching
 		if (Input.GetKeyDown("f")){
-			Debug.Log("pressed f");
 			Invoke("CharacterSwap", 0.5f);
 		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha1)){
+			Debug.Log("Earth Selected");
+			selectedType = 1;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2)){
+			Debug.Log("Water Selected");
+			selectedType = 2;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3)){
+			Debug.Log("Wind Selected");
+			selectedType = 3;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4)){
+			Debug.Log("Fire Selected");
+			selectedType = 4;
+		}
+
 		FlipPlayer();
 	}
 
-	public void CharacterSwap()
-	{
-		if (warriorSwap == false)
-		{
+	public void CharacterSwap(){
+		if (warriorSwap == false){
 			warriorSwap = true;
 		}
-		else
-		{
+		else{
 			warriorSwap = false;
 		}
 	}

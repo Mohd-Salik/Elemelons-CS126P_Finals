@@ -3,43 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterPlantMechanic : MonoBehaviour
-{
+{   
+    //Jump tilling parameters
     public static int jumpCounter = 0, soilCounter = 0;
     float plantLastPosition;
 	public Sprite soilImage;
 
-    
-	//If player moves, jump counter will reset.
-    //If player jumps the same position 5 times, soil gameObject will be created.
+    //debug
+    public static bool collidingSoil = false;
+    public static string debugCharacterPlantMechanic =  "";
+
+    //spawn of new soil variables
+    float xSpawn = 0f;
+    Vector2 whereToSpawn;
+
+    //limit planting to one at a time only
+    public static bool plantLimit = false;
+
+    //If not warrior, then enable planting mode
     void Update()
     {
-        if (plantLastPosition != transform.position.x)
-		{
-			jumpCounter = 0;
-		}
+        if (CharacterController.warriorSwap == false){
+            tryTilling();
+            tryPlanting();
+        }
+    }
 
-        if (jumpCounter == 0)
-        {
+    //pressing S key to plant while near the soil
+    void tryPlanting(){
+        if (SoilSeparator.playerOnPlant == true){
+            if (Input.GetKeyDown("s")){
+                SoilSeparator.plantingNow = true;
+            }      
+        }
+
+    }
+
+    //jump in the same location until tilled
+    void tryTilling(){
+        if ((plantLastPosition != transform.position.x) || (collidingSoil == true)){
+            jumpCounter = 0;
+        }
+        if (jumpCounter == 0){
             plantLastPosition = transform.position.x;
         }
-        else if (jumpCounter == 5)
-        {
+        else if ((jumpCounter == 5) && (plantLimit == false)){
             CharacterPlantMechanic.soilCounter ++;
             jumpCounter = 0;
             Invoke("createSoil", 0.5f);
+            plantLimit = true;
         }
     }
 
     //Create Soil Function, create sprite.
 	void createSoil(){
-		GameObject soil = new GameObject("Plantable Soil " + soilCounter);
-		soil.transform.position = GameObject.Find(this.name+"/feet").transform.position;
-		soil.transform.position += Vector3.up * .1f;
-		soil.transform.localScale = new Vector3(.7f, .7f, 1f);
 
-		SpriteRenderer soilSprite = soil.AddComponent<SpriteRenderer>();
-		soilSprite.sprite = soilImage;
-		soilSprite.sortingOrder = 0;
-        soilSprite.sortingLayerName = "Character";
+		xSpawn = GameObject.Find(this.name+"/feet").transform.position.x;
+
+        whereToSpawn = new Vector3 (xSpawn, -2f, 0f);
+        Instantiate (GameObject.Find("plant_soil"), whereToSpawn, Quaternion.identity);
 	}
 }
