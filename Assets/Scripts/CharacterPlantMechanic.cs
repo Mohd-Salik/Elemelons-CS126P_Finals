@@ -31,7 +31,7 @@ public class CharacterPlantMechanic : MonoBehaviour
 
     //pressing S key to plant while near the soil
     void tryPlanting(){
-        if (SoilSeparator.playerOnPlant == true){
+        if ((SoilSeparator.playerOnPlant == true) && (CharacterController.selectedType != 0)){
             if (Input.GetKeyDown("s")){
                 SoilSeparator.plantingNow = true;
             }      
