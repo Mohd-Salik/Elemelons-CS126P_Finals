@@ -21,7 +21,7 @@ public class death : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col) {
         
         if (WeaponCollider.attacking == false){
-            if (col.gameObject.tag == "Enemy"){
+            if ((col.gameObject.tag == "Enemy") | (col.gameObject.tag == "Boss")){
                 if (hearts == 3){
                     spriteHeart1.color = new Color(1f,1f,1f, .3f);
                     hearts -= 1;

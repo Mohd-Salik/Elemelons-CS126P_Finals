@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     GameObject enemy;
     float rngRange;
     Vector2 whereToSpawn;
+    bool rngSatisfied;
 
     float ySpawn, xSpawn = 0f;
 
@@ -23,7 +24,32 @@ public class Spawner : MonoBehaviour
     }
 
     void SpawnEnemy(){   
-        rngRange = Random.Range(1,5);
+
+        if ((CharacterController.level % 5) == 0){
+            while (rngSatisfied == false){
+                rngRange = Random.Range(5, 9);
+                if ((rngRange == 5) && ((CharacterController.earthPower + CharacterController.earthSeed) > 0)){
+                    rngSatisfied = true;
+                }
+                else if ((rngRange == 6) && ((CharacterController.waterPower + CharacterController.waterSeed) > 0)){
+                    rngSatisfied = true;
+                }
+                else if ((rngRange == 7) && ((CharacterController.airPower + CharacterController.airSeed) > 0)){
+                    rngSatisfied = true;
+                }
+                else if ((rngRange == 8) && ((CharacterController.firePower + CharacterController.fireSeed) > 0)){
+                    rngSatisfied = true;
+                }
+                else{
+                    rngRange = Random.Range(1,5);
+                    rngSatisfied = true;
+                }
+            }
+            
+        }
+        else{
+            rngRange = Random.Range(1,5);
+        }
 
         if(Time.time > nextSpawn){
             
@@ -36,22 +62,43 @@ public class Spawner : MonoBehaviour
                 ySpawn = Random.Range(1f, 2.40f);
             }
 
-            //spawn fire_minion
-            else if (Mathf.Abs(rngRange) == 4){
-                enemy = GameObject.Find(this.name+"fire_minion");
-                ySpawn = -1.49f;
-            }
-
             //spawn water_minion
             else if (Mathf.Abs(rngRange) == 2){
                 enemy = GameObject.Find(this.name+"water_minion");
-                ySpawn = -1.49f;
+                ySpawn = -1.60f;
             }
 
             //spawn earth minion
             else if (Mathf.Abs(rngRange) == 3){
                 enemy = GameObject.Find(this.name+"earth_minion");
-                ySpawn = -1.49f;
+                ySpawn = -1.60f;
+            }
+
+            //spawn fire_minion
+            else if (Mathf.Abs(rngRange) == 4){
+                enemy = GameObject.Find(this.name+"fire_minion");
+                ySpawn = -1.60f;
+            }
+
+            //spawn earth_boss
+            else if (Mathf.Abs(rngRange) == 5){
+                enemy = GameObject.Find(this.name+"earth_boss");
+                ySpawn = -1.60f;
+            }
+
+            else if (Mathf.Abs(rngRange) == 6){
+                enemy = GameObject.Find(this.name+"water_boss");
+                ySpawn = -1.60f;
+            }
+
+            else if (Mathf.Abs(rngRange) == 7){
+                enemy = GameObject.Find(this.name+"air_boss");
+                ySpawn = -1.60f;
+            }
+
+            else if (Mathf.Abs(rngRange) == 8){
+                enemy = GameObject.Find(this.name+"fire_boss");
+                ySpawn = -1.60f;
             }
 
             //randomizes left and right spawn
@@ -65,6 +112,7 @@ public class Spawner : MonoBehaviour
             //spawn enemy
             whereToSpawn = new Vector3 (xSpawn, ySpawn, 0f);
             Instantiate (enemy, whereToSpawn, Quaternion.identity);
+            rngSatisfied = false;
         }
 
     }

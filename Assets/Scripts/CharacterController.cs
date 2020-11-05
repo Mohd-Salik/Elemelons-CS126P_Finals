@@ -20,19 +20,21 @@ public class CharacterController : MonoBehaviour
 	public static int firePower = 0;
 	public static int earthPower = 0;
 
-	public static int airSeed = 5;
-	public static int waterSeed = 5;
-	public static int fireSeed = 5;
-	public static int earthSeed = 5;
+	public static int airSeed = 0;
+	public static int waterSeed = 0;
+	public static int fireSeed = 0;
+	public static int earthSeed = 0;
 	public static int kills = 0;
 	public static int harvests = 0;
 
 	[Header("Type and Character Switch")]
 	public static int selectedType = 0;
+	public static int level = 1;
 	public static bool warriorSwap = false;
 	Rigidbody2D playerRigidBody;
 	Vector3 spawnPosition;
 	bool dead;
+
 	public static bool warriorFaceRight= false;
 	public static bool flipped = false;
 	
@@ -102,13 +104,14 @@ public class CharacterController : MonoBehaviour
 		waterPower = 0;
 		firePower = 0;
 		earthPower = 0;
-		airSeed = 5;
-		waterSeed = 5;
-		fireSeed = 5;
-		earthSeed = 5;
+		airSeed = 0;
+		waterSeed = 0;
+		fireSeed = 0;
+		earthSeed = 0;
 		kills = 0;
 		harvests = 0;
 		selectedType = 0;
+		level = 1;
 		warriorSwap = false;
 		warriorFaceRight= false;
 		flipped = false;
@@ -118,7 +121,7 @@ public class CharacterController : MonoBehaviour
 		Environment.nightTime = false;
 		Environment.timer = 20f;
 		Environment.dawnRise = false;
-        Environment.currentTransparency = 0f;
+        Environment.currentTransparency = 1f;
 	}
 	
 	public void CharacterSwap(){

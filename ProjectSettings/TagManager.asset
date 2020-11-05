@@ -13,6 +13,7 @@ TagManager:
   - Player Group
   - Player Sprites
   - Plant
+  - Boss
   layers:
   - Default
   - TransparentFX

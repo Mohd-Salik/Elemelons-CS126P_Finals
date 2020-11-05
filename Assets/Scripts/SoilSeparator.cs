@@ -18,6 +18,7 @@ public class SoilSeparator : MonoBehaviour
         if (plantingNow == true){
             CharacterPlant();
             plantingNow = false;
+            type = "";
         }
     }
 
@@ -46,7 +47,7 @@ public class SoilSeparator : MonoBehaviour
             CharacterController.fireSeed -= 1;     
         }
         
-        if (type != null){
+        if (type != ""){
             Instantiate (GameObject.Find(type), whereToSpawn, Quaternion.identity);
             Destroy(this.gameObject);
         }

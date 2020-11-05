@@ -51,10 +51,11 @@ public class Environment : MonoBehaviour
                 if (nightTime == true){
                     nightTime = false;
                     timer = 20f;
+                    CharacterController.level += 1;
                 }
                 else{
                     nightTime = true;
-                    timer = 50f;
+                    timer = 30f;
                 }
             }
         }

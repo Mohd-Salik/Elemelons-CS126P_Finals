@@ -57,15 +57,25 @@ public class WeaponCollider : MonoBehaviour
     {   
         if (col.gameObject.tag == "Enemy"){
             if (col.gameObject.name == "fire_minion(Clone)"){
-                if ((CharacterController.selectedType == 4) && (CharacterController.firePower > 0)){
+                if (CharacterController.selectedType == 0){
                     CharacterController.fireSeed += 1;
-                    CharacterController.firePower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
                 }
+                else if ((CharacterController.selectedType == 4) && (CharacterController.firePower > 0)){
+                    CharacterController.fireSeed += 1;
+                    CharacterController.firePower -= 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1; 
+                }
             }
             else if (col.gameObject.name == "water_minion(Clone)"){
-                if ((CharacterController.selectedType == 2) && (CharacterController.waterPower > 0)){
+                if (CharacterController.selectedType == 0){
+                    CharacterController.waterSeed += 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+                else if ((CharacterController.selectedType == 2) && (CharacterController.waterPower > 0)){
                     CharacterController.waterSeed += 1;
                     CharacterController.waterPower -= 1;
                     Destroy(col.gameObject);
@@ -73,7 +83,12 @@ public class WeaponCollider : MonoBehaviour
                 }
             }
             else if (col.gameObject.name == "air_minion(Clone)"){
-                if ((CharacterController.selectedType == 1) && (CharacterController.airPower > 0)){
+                if (CharacterController.selectedType == 0){
+                    CharacterController.airSeed += 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+                else if ((CharacterController.selectedType == 1) && (CharacterController.airPower > 0)){
                     CharacterController.airSeed += 1;
                     CharacterController.airPower -= 1;
                     Destroy(col.gameObject);
@@ -81,7 +96,12 @@ public class WeaponCollider : MonoBehaviour
                 }
             }
             else if (col.gameObject.name == "earth_minion(Clone)"){
-                if ((CharacterController.selectedType == 3) && (CharacterController.earthPower > 0)){
+                if (CharacterController.selectedType == 0){
+                    CharacterController.earthSeed += 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+                else if ((CharacterController.selectedType == 3) && (CharacterController.earthPower > 0)){
                     CharacterController.earthSeed += 1;
                     CharacterController.earthPower -= 1;
                     Destroy(col.gameObject);
@@ -90,6 +110,43 @@ public class WeaponCollider : MonoBehaviour
             }
            
         }
+
+         if (col.gameObject.tag == "Boss"){
+            if (col.gameObject.name == "fire_boss(Clone)"){
+                if ((CharacterController.selectedType == 4) && (CharacterController.firePower > 0)){
+                    CharacterController.fireSeed += 2;
+                    CharacterController.firePower -= 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+            }
+            else if (col.gameObject.name == "water_boss(Clone)"){
+                if ((CharacterController.selectedType == 2) && (CharacterController.waterPower > 0)){
+                    CharacterController.waterSeed += 2;
+                    CharacterController.waterPower -= 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+            }
+            else if (col.gameObject.name == "air_boss(Clone)"){
+                if ((CharacterController.selectedType == 1) && (CharacterController.airPower > 0)){
+                    CharacterController.airSeed += 2;
+                    CharacterController.airPower -= 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+            }
+            else if (col.gameObject.name == "earth_boss(Clone)"){
+                if ((CharacterController.selectedType == 3) && (CharacterController.earthPower > 0)){
+                    CharacterController.earthSeed += 2;
+                    CharacterController.earthPower -= 1;
+                    Destroy(col.gameObject);
+                    CharacterController.kills += 1;
+                }
+            }
+           
+        }
+
         else if (col.gameObject.tag == "Plant"){
             if (col.gameObject.name == "plant_air(Clone)"){
                 if (CharacterController.airPower < 5){

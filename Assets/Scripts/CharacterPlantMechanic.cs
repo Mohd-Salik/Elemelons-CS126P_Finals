@@ -34,7 +34,10 @@ public class CharacterPlantMechanic : MonoBehaviour
         if ((SoilSeparator.playerOnPlant == true) && (CharacterController.selectedType != 0)){
             if (Input.GetKeyDown("s")){
                 SoilSeparator.plantingNow = true;
-            }      
+            }
+            else{
+                SoilSeparator.plantingNow = false;
+            }
         }
 
     }

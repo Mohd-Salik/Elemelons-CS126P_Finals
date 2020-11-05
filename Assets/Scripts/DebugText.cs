@@ -24,7 +24,8 @@ public class DebugText : MonoBehaviour
         + "\nFire power: " + CharacterController.firePower.ToString()
         + "\nAir power: " + CharacterController.airPower.ToString()
         + "\nWater power: " + CharacterController.waterPower.ToString()
-        + "\nEarth power: " + CharacterController.earthPower.ToString();
+        + "\nEarth power: " + CharacterController.earthPower.ToString()
+        + "\nLevel: " + CharacterController.level.ToString();
         // debugText.text = CharacterPlantMechanic.debugCharacterPlantMechanic;
     }
 }
