@@ -7,7 +7,7 @@ public class CharacterController : MonoBehaviour
 
 	[Header("Controller Speed and Jump")]
 	[Tooltip("Character Controller Speed and Jump")]
-	public float speed = 2f, jumpVelocity = 10f;
+	public float speed = 3f, jumpVelocity = 10f;
 
 	[Header("Is Player on Ground Variables")]
 	public LayerMask playerMask;
@@ -82,7 +82,7 @@ public class CharacterController : MonoBehaviour
 			Debug.Log("Fire Selected");
 			selectedType = 4;
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha5)){
+		else if (Input.GetKeyDown("e")){
 			Debug.Log("Nothing Selected");
 			selectedType = 0;
 		}

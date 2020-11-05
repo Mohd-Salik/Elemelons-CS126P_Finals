@@ -24,7 +24,7 @@ public class WeaponCollider : MonoBehaviour
 		    }
         }
         if (CharacterController.warriorSwap == false){
-            if (Input.GetKeyDown("s")){
+            if (Input.GetKeyDown("e")){
                 harvestStart = true;
                 Invoke("attack", 0.5f);
             }

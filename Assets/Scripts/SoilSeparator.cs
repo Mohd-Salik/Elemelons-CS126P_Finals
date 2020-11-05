@@ -25,7 +25,8 @@ public class SoilSeparator : MonoBehaviour
     //instantiate the new fruit game object
     void CharacterPlant(){
         xSpawn = GameObject.Find(this.name).transform.position.x;
-        whereToSpawn = new Vector3 (xSpawn, -1f, 0f);
+        whereToSpawn = new Vector3 (xSpawn, -3f, 0f);
+
         if (CharacterController.selectedType == 0){
             Debug.Log("No Element Selected");
         }
