@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Feet
+  - Ingnore by Characters
+  - GroundCollider
+  - Enemy
+  - soil
+  - Weapon
+  - Player Group
+  - Player Sprites
+  - Plant
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -14,9 +23,9 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - 
-  - 
+  - land
+  - TEXTS
+  - UI Canvas
   - 
   - 
   - 
@@ -50,4 +59,7 @@ TagManager:
     locked: 0
   - name: GUI
     uniqueID: 2100176699
+    locked: 0
+  - name: UI Canvas
+    uniqueID: 283089201
     locked: 0
