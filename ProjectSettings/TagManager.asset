@@ -9,6 +9,10 @@ TagManager:
   - GroundCollider
   - Enemy
   - soil
+  - Weapon
+  - Player Group
+  - Player Sprites
+  - Plant
   layers:
   - Default
   - TransparentFX

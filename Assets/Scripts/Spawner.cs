@@ -23,21 +23,21 @@ public class Spawner : MonoBehaviour
     }
 
     void SpawnEnemy(){   
-        //randomizes spawn enemy type
-        rngRange = Random.Range(0, 4);
+        rngRange = Random.Range(1,5);
 
         if(Time.time > nextSpawn){
+            
             //add more real-time until next spawn
             nextSpawn = Time.time + spawnRate;
 
             //spawn air minion in air
-            if (Mathf.Abs(rngRange) == 0){
+            if (Mathf.Abs(rngRange) == 1){
                 enemy = GameObject.Find(this.name+"air_minion");
                 ySpawn = Random.Range(1f, 2.40f);
             }
 
             //spawn fire_minion
-            else if (Mathf.Abs(rngRange) == 1){
+            else if (Mathf.Abs(rngRange) == 4){
                 enemy = GameObject.Find(this.name+"fire_minion");
                 ySpawn = -1.49f;
             }
@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
             }
 
             //spawn earth minion
-            else{
+            else if (Mathf.Abs(rngRange) == 3){
                 enemy = GameObject.Find(this.name+"earth_minion");
                 ySpawn = -1.49f;
             }

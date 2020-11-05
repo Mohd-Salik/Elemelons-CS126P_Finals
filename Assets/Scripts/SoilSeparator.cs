@@ -29,17 +29,17 @@ public class SoilSeparator : MonoBehaviour
             Debug.Log("No Element Selected");
         }
 
-        if ((CharacterController.selectedType == 1) && (CharacterController.earthSeed > 0)){
-            type = "plant_earth";
-            CharacterController.earthSeed -= 1;
+        if ((CharacterController.selectedType == 1) && (CharacterController.airSeed > 0)){
+            type = "plant_air";
+            CharacterController.airSeed -= 1;
         }
         else if ((CharacterController.selectedType == 2) && (CharacterController.waterSeed > 0)){
             type = "plant_water";
              CharacterController.waterSeed -= 1;
         }
-        else if ((CharacterController.selectedType == 3) && (CharacterController.airSeed > 0)){
-            type = "plant_air";  
-            CharacterController.airSeed -= 1;
+        else if ((CharacterController.selectedType == 3) && (CharacterController.earthSeed > 0)){
+            type = "plant_earth";  
+            CharacterController.earthSeed -= 1;
         }
         else if ((CharacterController.selectedType == 4) && (CharacterController.fireSeed > 0)){
             type = "plant_fire";
@@ -58,9 +58,10 @@ public class SoilSeparator : MonoBehaviour
     //player can only plant when near the soil
     void OnTriggerStay2D(Collider2D col){
         if (col.gameObject.tag == "Enemy"){
+            CharacterPlantMechanic.plantLimit = false;
             Destroy(this.gameObject);
         }
-        else if (col.gameObject.tag == "Player"){
+        else if (col.gameObject.tag == "Player Group"){
             CharacterPlantMechanic.collidingSoil = true;
             if (playerOnPlant == false){
                 playerOnPlant = true;
@@ -71,7 +72,7 @@ public class SoilSeparator : MonoBehaviour
     //player cannot plant when away from soil
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player"){
+        if (col.gameObject.tag == "Player Group"){
             CharacterPlantMechanic.collidingSoil = false;
             playerOnPlant = false;
         }

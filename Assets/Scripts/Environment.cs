@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    public float timeConfig;
-    public static float timer = 0f;
+    public static float timer = 20f;
     public static bool nightTime = false;
 
     public static bool dawnRise = false;
     public static float timerDawnRise = 0f;
 
     
-    float currentTransparency = 0f;
-    SpriteRenderer spirteBackground;
+    public static float currentTransparency = 0f;
+    public static SpriteRenderer spirteBackground;
 
     //initialize the timer and set background transparency
     void OnEnable(){
-        timer = timeConfig;
         timerDawnRise = 5f;
         spirteBackground = GetComponent<SpriteRenderer>();
         spirteBackground.color = new Color(1f,1f,1f, currentTransparency);
@@ -50,12 +48,13 @@ public class Environment : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0){
                 dawnRise = true;
-                timer = 10f;
                 if (nightTime == true){
                     nightTime = false;
+                    timer = 20f;
                 }
                 else{
                     nightTime = true;
+                    timer = 50f;
                 }
             }
         }

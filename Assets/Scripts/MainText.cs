@@ -14,13 +14,19 @@ public class MainText : MonoBehaviour
 
     //Sample Text UI for debbuging purposes
     void updateTextUI(){
-
-        if (CharacterController.warriorSwap == true){
-            mainText.text = "WARRIOR MODE";
+        if (death.respawn == true){
+            mainText.text = "GAME OVER Respawning..";
         }
-        else if (CharacterController.warriorSwap == false){
-            mainText.text = "FARMING MODE";
+        else{
+        mainText.text = "# Kills: " + CharacterController.kills.ToString()
+        + "         # Harverst: " + CharacterController.harvests.ToString();
         }
+        // if (CharacterController.warriorSwap == true){
+        //     mainText.text = "WARRIOR MODE";
+        // }
+        // else if (CharacterController.warriorSwap == false){
+        //     mainText.text = "FARMING MODE";
+        // }
     }
 
     void Update(){

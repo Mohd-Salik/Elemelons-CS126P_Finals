@@ -4,123 +4,46 @@ using UnityEngine;
 
 public class death : MonoBehaviour
 {
-    public GameObject player;
-
     public GameObject heart1;
     public GameObject heart2;
     public GameObject heart3;
 
-    // public GameObject fire;
-    // public GameObject water;
-    // public GameObject earth;
-    // public GameObject wind;
+    public static int hearts = 3;
+    SpriteRenderer spriteHeart1, spriteHeart2, spriteHeart3;
+    public static bool respawn = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
+    void Start(){
+        spriteHeart1 = heart1.GetComponent<SpriteRenderer>();
+        spriteHeart2 = heart2.GetComponent<SpriteRenderer>();
+        spriteHeart3 = heart3.GetComponent<SpriteRenderer>();
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-
-        if(!heart3){
-                Destroy(player);
-            }
         
-        if (col.gameObject.name == "fire_minion"){
-            Destroy(heart1);
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-        if (col.gameObject.name == "fire_minion(Clone)"){
-            Destroy(heart1);
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-             
-
-        if (col.gameObject.name == "water_minion"){
-            Destroy(heart1);
-            
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
+        if (WeaponCollider.attacking == false){
+            if (col.gameObject.tag == "Enemy"){
+                if (hearts == 3){
+                    spriteHeart1.color = new Color(1f,1f,1f, .3f);
+                    hearts -= 1;
+                }
+                else if (hearts == 2){
+                    spriteHeart2.color = new Color(1f,1f,1f, .3f);
+                    hearts -= 1;
+                }
+                else if (hearts == 1){
+                    spriteHeart3.color = new Color(1f,1f,1f, .3f);
+                    respawn = true;
+                    Invoke("RespawnHearts", 5f);
+                }
+              
             }
         }
+    }
 
-        if (col.gameObject.name == "water_minion(Clone)"){
-            Destroy(heart1);
-            
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-        if (col.gameObject.name == "earth_minion"){
-            Destroy(heart1);
-            
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-        if (col.gameObject.name == "earth_minion(Clone)"){
-            Destroy(heart1);
-            
-           if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-        if (col.gameObject.name == "air_minion"){
-            Destroy(heart1);
-            
-            if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-        if (col.gameObject.name == "air_minion(Clone)"){
-            Destroy(heart1);
-            
-           if(!heart1){
-                Destroy(heart2);
-            }
-            if(!heart2){
-                Destroy(heart3);
-            }
-        }
-
-}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void RespawnHearts(){
+        hearts = 3;
+        spriteHeart1.color = new Color(1f,1f,1f, 1f);
+        spriteHeart2.color = new Color(1f,1f,1f, 1f);
+        spriteHeart3.color = new Color(1f,1f,1f, 1f);
     }
 }
