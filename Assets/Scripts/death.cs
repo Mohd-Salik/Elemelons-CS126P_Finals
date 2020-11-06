@@ -37,6 +37,13 @@ public class death : MonoBehaviour
                 }
               
             }
+            if ((col.gameObject.tag == "border")){
+                spriteHeart1.color = new Color(1f,1f,1f, .3f);
+                spriteHeart2.color = new Color(1f,1f,1f, .3f);
+                spriteHeart3.color = new Color(1f,1f,1f, .3f);
+                respawn = true;
+                Invoke("RespawnHearts", 5f);
+            }
         }
     }
 

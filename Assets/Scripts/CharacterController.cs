@@ -106,7 +106,7 @@ public class CharacterController : MonoBehaviour
 		if (!dead){
 			dead = true;
 			SoundManagerScript.PlaySound("deathPlayer");
-			Invoke("Respawn", 5f);
+			Invoke("Respawn", 2f);
 			playerTransform.position = spawnPosition;
 		}
 	}
@@ -131,10 +131,11 @@ public class CharacterController : MonoBehaviour
 		death.respawn = false;
 		Environment.nightTime = false;
     	Environment.dawnRise = false;
-		Environment.nightTime = false;
-		Environment.timer = 20f;
+		Environment.timer = 10f;
 		Environment.dawnRise = false;
-        Environment.currentTransparency = 1f;
+		Environment.currentTransparency = 0f;
+		Environment.spirteBackground.color = new Color(1f,1f,1f, 0f);
+        
 	}
 	
 	public void CharacterSwap(){
