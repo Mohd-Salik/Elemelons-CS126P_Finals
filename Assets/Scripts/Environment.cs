@@ -15,7 +15,7 @@ public class Environment : MonoBehaviour
     public static SpriteRenderer spirteBackground;
 
     //initialize the timer and set background transparency
-    void OnEnable(){
+    void Start(){
         timerDawnRise = 5f;
         spirteBackground = GetComponent<SpriteRenderer>();
         spirteBackground.color = new Color(1f,1f,1f, currentTransparency);
@@ -52,10 +52,12 @@ public class Environment : MonoBehaviour
                     nightTime = false;
                     timer = 20f;
                     CharacterController.level += 1;
+                    EnvironmentAudio.changed = true;
                 }
                 else{
                     nightTime = true;
                     timer = 30f;
+                    EnvironmentAudio.changed = true;
                 }
             }
         }

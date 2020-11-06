@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour
 {
@@ -60,7 +61,11 @@ public class CharacterController : MonoBehaviour
 		if (Input.GetButtonDown("Jump")){
 			Jump();
 		}
-	
+
+		if (Input.GetKey(KeyCode.Escape)){
+			QuickReset();
+			SceneManager.LoadScene("Main Menu");
+		}
 		//character switching
 		if (Input.GetKeyDown("f")){
 			Invoke("CharacterSwap", 0.5f);
@@ -88,6 +93,13 @@ public class CharacterController : MonoBehaviour
 		}
 
 		FlipPlayer();
+	}
+	public void QuickReset(){
+		if (!dead){
+			dead = true;
+			Respawn();
+			playerTransform.position = spawnPosition;
+		}
 	}
 
 	public void Die(){
