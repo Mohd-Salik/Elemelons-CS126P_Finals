@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    public static float timer = 20f;
+    public static float timer = 10f;
     public static bool nightTime = false;
 
     public static bool dawnRise = false;
@@ -49,8 +49,9 @@ public class Environment : MonoBehaviour
             if (timer <= 0){
                 dawnRise = true;
                 if (nightTime == true){
+                    SoundManagerScript.PlaySound("victory");
                     nightTime = false;
-                    timer = 20f;
+                    timer = 10f;
                     CharacterController.level += 1;
                     EnvironmentAudio.changed = true;
                 }

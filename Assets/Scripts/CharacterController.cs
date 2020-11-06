@@ -21,10 +21,10 @@ public class CharacterController : MonoBehaviour
 	public static int firePower = 0;
 	public static int earthPower = 0;
 
-	public static int airSeed = 0;
-	public static int waterSeed = 0;
-	public static int fireSeed = 0;
-	public static int earthSeed = 0;
+	public static int airSeed = 1;
+	public static int waterSeed = 1;
+	public static int fireSeed = 1;
+	public static int earthSeed = 1;
 	public static int kills = 0;
 	public static int harvests = 0;
 
@@ -105,6 +105,7 @@ public class CharacterController : MonoBehaviour
 	public void Die(){
 		if (!dead){
 			dead = true;
+			SoundManagerScript.PlaySound("deathPlayer");
 			Invoke("Respawn", 5f);
 			playerTransform.position = spawnPosition;
 		}

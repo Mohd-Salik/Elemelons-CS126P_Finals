@@ -56,6 +56,7 @@ public class WeaponCollider : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {   
         if (col.gameObject.tag == "Enemy"){
+            SoundManagerScript.PlaySound("deathMonster");
             if (col.gameObject.name == "fire_minion(Clone)"){
                 if (CharacterController.selectedType == 0){
                     CharacterController.fireSeed += 1;
@@ -112,6 +113,7 @@ public class WeaponCollider : MonoBehaviour
         }
 
          if (col.gameObject.tag == "Boss"){
+            SoundManagerScript.PlaySound("deathMonster");
             if (col.gameObject.name == "fire_boss(Clone)"){
                 if ((CharacterController.selectedType == 4) && (CharacterController.firePower > 0)){
                     CharacterController.fireSeed += 2;
@@ -148,23 +150,24 @@ public class WeaponCollider : MonoBehaviour
         }
 
         else if (col.gameObject.tag == "Plant"){
+            SoundManagerScript.PlaySound("harvest");
             if (col.gameObject.name == "plant_air(Clone)"){
-                if (CharacterController.airPower < 5){
+                if (CharacterController.airPower < 4){
                     CharacterController.airPower += 1;
                 }
             }
             else if (col.gameObject.name == "plant_earth(Clone)"){
-                if (CharacterController.earthPower < 5){
+                if (CharacterController.earthPower < 4){
                     CharacterController.earthPower += 1;
                 }
             }
             else if (col.gameObject.name == "plant_water(Clone)"){
-                if (CharacterController.waterPower < 5){
+                if (CharacterController.waterPower < 4){
                     CharacterController.waterPower += 1;
                 }
             }
             else if (col.gameObject.name == "plant_fire(Clone)"){
-                if (CharacterController.firePower < 5){
+                if (CharacterController.firePower < 4){
                     CharacterController.firePower += 1;
                 }
             }

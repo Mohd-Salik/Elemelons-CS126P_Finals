@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 	[Tooltip("How many enemies spawn")]
     public float spawnRate = 10f;
 	[Tooltip("How long enemies spawn")]
-    public float nextSpawn = 5.0f;
+    public float nextSpawn = 1f;
 
     GameObject enemy;
     float rngRange;
@@ -65,40 +65,40 @@ public class Spawner : MonoBehaviour
             //spawn water_minion
             else if (Mathf.Abs(rngRange) == 2){
                 enemy = GameObject.Find(this.name+"water_minion");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             //spawn earth minion
             else if (Mathf.Abs(rngRange) == 3){
                 enemy = GameObject.Find(this.name+"earth_minion");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             //spawn fire_minion
             else if (Mathf.Abs(rngRange) == 4){
                 enemy = GameObject.Find(this.name+"fire_minion");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             //spawn earth_boss
             else if (Mathf.Abs(rngRange) == 5){
                 enemy = GameObject.Find(this.name+"earth_boss");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             else if (Mathf.Abs(rngRange) == 6){
                 enemy = GameObject.Find(this.name+"water_boss");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             else if (Mathf.Abs(rngRange) == 7){
                 enemy = GameObject.Find(this.name+"air_boss");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             else if (Mathf.Abs(rngRange) == 8){
                 enemy = GameObject.Find(this.name+"fire_boss");
-                ySpawn = -1.60f;
+                ySpawn = -1.70f;
             }
 
             //randomizes left and right spawn

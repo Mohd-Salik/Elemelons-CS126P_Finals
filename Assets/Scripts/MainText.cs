@@ -18,8 +18,10 @@ public class MainText : MonoBehaviour
             mainText.text = "GAME OVER Respawning..";
         }
         else{
-        mainText.text = "# Kills: " + CharacterController.kills.ToString()
-        + "         # Harverst: " + CharacterController.harvests.ToString();
+        mainText.text = "Kills: " + CharacterController.kills.ToString()
+        + "    Harvest: " + CharacterController.harvests.ToString()
+        + "\nDay: " + CharacterController.level.ToString()
+        + "    Hours Left: " + Environment.timer.ToString("0");
         }
         // if (CharacterController.warriorSwap == true){
         //     mainText.text = "WARRIOR MODE";
