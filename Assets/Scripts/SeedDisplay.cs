@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class SeedDisplay : MonoBehaviour
 {
     Text number;
-
+    Color newColor;
+    
     void Start(){
+        newColor = new Color(47/255, 47/255, 46/255, .85f);
         number = GetComponent<Text>();
     }
 
@@ -19,7 +21,7 @@ public class SeedDisplay : MonoBehaviour
                 number.color = Color.red;
             }
             else{
-                number.color = Color.black;
+                number.color = newColor;
             }
         }
         else if (this.gameObject.name == "Water Seeds"){
@@ -28,7 +30,7 @@ public class SeedDisplay : MonoBehaviour
                 number.color = Color.blue;
             }
             else{
-                number.color = Color.black;
+                number.color = newColor;
             }
         }
         else if (this.gameObject.name == "Air Seeds"){
@@ -37,7 +39,7 @@ public class SeedDisplay : MonoBehaviour
                 number.color = Color.yellow;
             }
             else{
-                number.color = Color.black;
+                number.color = newColor;
             }
         }
         else if (this.gameObject.name == "Earth Seeds"){
@@ -46,7 +48,7 @@ public class SeedDisplay : MonoBehaviour
                 number.color = Color.green;
             }
             else{
-                number.color = Color.black;
+                number.color = newColor;
             }
         }
     }
