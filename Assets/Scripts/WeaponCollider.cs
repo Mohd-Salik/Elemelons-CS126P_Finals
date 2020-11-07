@@ -56,18 +56,22 @@ public class WeaponCollider : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {   
         if (col.gameObject.tag == "Enemy"){
-            SoundManagerScript.PlaySound("deathMonster");
             if (col.gameObject.name == "fire_minion(Clone)"){
                 if (CharacterController.selectedType == 0){
                     CharacterController.fireSeed += 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
                 }
                 else if ((CharacterController.selectedType == 4) && (CharacterController.firePower > 0)){
                     CharacterController.fireSeed += 1;
                     CharacterController.firePower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1; 
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else{
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "water_minion(Clone)"){
@@ -75,12 +79,17 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.waterSeed += 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
                 }
                 else if ((CharacterController.selectedType == 2) && (CharacterController.waterPower > 0)){
                     CharacterController.waterSeed += 1;
                     CharacterController.waterPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else{
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "air_minion(Clone)"){
@@ -88,12 +97,17 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.airSeed += 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
                 }
                 else if ((CharacterController.selectedType == 1) && (CharacterController.airPower > 0)){
                     CharacterController.airSeed += 1;
                     CharacterController.airPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else{
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "earth_minion(Clone)"){
@@ -101,12 +115,17 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.earthSeed += 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
                 }
                 else if ((CharacterController.selectedType == 3) && (CharacterController.earthPower > 0)){
                     CharacterController.earthSeed += 1;
                     CharacterController.earthPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else{
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
            
@@ -120,6 +139,10 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.firePower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else if (CharacterController.selectedType != 4){
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "water_boss(Clone)"){
@@ -128,6 +151,10 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.waterPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else if (CharacterController.selectedType != 2){
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "air_boss(Clone)"){
@@ -136,6 +163,10 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.airPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
+                }
+                else if (CharacterController.selectedType != 1){
+                    SoundManagerScript.PlaySound("deathMonster");
                 }
             }
             else if (col.gameObject.name == "earth_boss(Clone)"){
@@ -144,7 +175,14 @@ public class WeaponCollider : MonoBehaviour
                     CharacterController.earthPower -= 1;
                     Destroy(col.gameObject);
                     CharacterController.kills += 1;
+                    SoundManagerScript.PlaySound("kill");
                 }
+                else if (CharacterController.selectedType != 3){
+                    SoundManagerScript.PlaySound("deathMonster");
+                }
+            }
+            else{
+                SoundManagerScript.PlaySound("deathMonster");
             }
            
         }

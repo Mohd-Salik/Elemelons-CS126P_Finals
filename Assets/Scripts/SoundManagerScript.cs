@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public AudioClip deathMonsterSound, deathPlayerSound, damagePlayerSound, harvestSound, victorySound;
-    public static AudioClip deathMonster, deathPlayer, damagePlayer, harvest, victory;
+    public AudioClip clickSound, killSound,deathMonsterSound, deathPlayerSound, damagePlayerSound, harvestSound, victorySound;
+    public static AudioClip click, kill, deathMonster, deathPlayer, damagePlayer, harvest, victory;
     public static AudioSource audioSrc;
     // Start is called before the first frame update
 
@@ -13,6 +13,8 @@ public class SoundManagerScript : MonoBehaviour
     void Start()
     {
         audioSrc = this.GetComponent<AudioSource>();   
+        click = clickSound;
+        kill = killSound;
         deathMonster = deathMonsterSound;
         deathPlayer = deathPlayerSound;
         damagePlayer = damagePlayerSound;
@@ -22,6 +24,12 @@ public class SoundManagerScript : MonoBehaviour
 
     public static void PlaySound(string clip){
         switch(clip){
+            case "kill":
+                audioSrc.PlayOneShot(kill);
+                break;
+            case "click":
+                audioSrc.PlayOneShot(click);
+                break;
             case "deathMonster":
                 audioSrc.PlayOneShot(deathMonster);
                 break;

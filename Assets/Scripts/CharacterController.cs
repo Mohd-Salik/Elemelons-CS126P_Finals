@@ -62,32 +62,34 @@ public class CharacterController : MonoBehaviour
 			Jump();
 		}
 
-		if (Input.GetKey(KeyCode.Escape)){
-			QuickReset();
-			SceneManager.LoadScene("Main Menu");
-		}
 		//character switching
 		if (Input.GetKeyDown("f")){
+			SoundManagerScript.PlaySound("click");
 			Invoke("CharacterSwap", 0.5f);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)){
+			SoundManagerScript.PlaySound("click");
 			Debug.Log("Air Selected");
 			selectedType = 1;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2)){
+			SoundManagerScript.PlaySound("click");
 			Debug.Log("Water Selected");
 			selectedType = 2;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3)){
+			SoundManagerScript.PlaySound("click");
 			Debug.Log("Earth Selected");
 			selectedType = 3;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4)){
+			SoundManagerScript.PlaySound("click");
 			Debug.Log("Fire Selected");
 			selectedType = 4;
 		}
 		else if (Input.GetKeyDown("e")){
+			SoundManagerScript.PlaySound("click");
 			Debug.Log("Nothing Selected");
 			selectedType = 0;
 		}
@@ -117,10 +119,10 @@ public class CharacterController : MonoBehaviour
 		waterPower = 0;
 		firePower = 0;
 		earthPower = 0;
-		airSeed = 0;
-		waterSeed = 0;
-		fireSeed = 0;
-		earthSeed = 0;
+		airSeed = 1;
+		waterSeed = 1;
+		fireSeed = 1;
+		earthSeed = 1;
 		kills = 0;
 		harvests = 0;
 		selectedType = 0;
