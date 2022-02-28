@@ -37,6 +37,7 @@ V0.4.1 - Planting Bug Fix Patch
 
 ![image](https://user-images.githubusercontent.com/60991019/155971425-d8d2b8ba-dddb-420b-9d9d-7e8ba04024ef.png)
 ![image](https://user-images.githubusercontent.com/60991019/155971574-b3e3d94e-bd80-45a4-a511-aebdc76309f0.png)
+![image](https://user-images.githubusercontent.com/60991019/155973125-1e32d453-bdd5-4b94-a9a8-f559a1880c2f.png)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **PREVIEW**
