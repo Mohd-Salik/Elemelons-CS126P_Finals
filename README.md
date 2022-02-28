@@ -1,4 +1,4 @@
-# CS126P_Finals
+# CS126P_Finals Developed by Teampura
 Unity, 2D, single player, side scroller, pixel art
 
 V0.0.1 - Initialize Game World
@@ -34,3 +34,12 @@ V0.4.0 - Planting Mechanic
 V0.4.1 - Planting Bug Fix Patch
 -Fixed plant will ragdoll beyond the map
 -Fixed null instantiate on planting when no element is selected
+
+![image](https://user-images.githubusercontent.com/60991019/155971425-d8d2b8ba-dddb-420b-9d9d-7e8ba04024ef.png)
+![image](https://user-images.githubusercontent.com/60991019/155971489-1bfdcd3f-d9f9-4b9b-867c-c945ebbecb51.png)
+![image](https://user-images.githubusercontent.com/60991019/155971539-8200a437-534d-4fc2-b2e1-96c6cf20c147.png)
+![image](https://user-images.githubusercontent.com/60991019/155971574-b3e3d94e-bd80-45a4-a511-aebdc76309f0.png)
+
+
+
+
